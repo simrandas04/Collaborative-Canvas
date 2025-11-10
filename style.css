@@ -1,0 +1,156 @@
+/* Collab Canvas - Simran Das */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+  color: #333;
+  overflow: hidden;
+}
+
+header#app-header {
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+#app-header h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+#app-header p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+main#canvas-container {
+  display: flex;
+  height: calc(100% - 100px);
+}
+
+/* ===== Toolbar ===== */
+#toolbar {
+  width: 220px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(0,0,0,0.05);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tool-group {
+  margin-bottom: 12px;
+}
+.tool-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #444;
+}
+input[type="color"],
+input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+.buttons {
+  display: grid;
+  gap: 8px;
+}
+button {
+  background: #2B6CB0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+button:hover {
+  background: #2C5282;
+  transform: scale(1.03);
+}
+button.active {
+  background: #4299E1;
+  box-shadow: 0 0 10px rgba(66,153,225,0.4);
+}
+.users {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.users h3 {
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+
+/* ===== Canvas ===== */
+#canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  cursor: crosshair;
+  display: block;
+}
+#cursors {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cursor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ===== Status Bar ===== */
+footer#status-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  height: 40px;
+  font-size: 0.85rem;
+  color: #333;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  main#canvas-container {
+    flex-direction: column;
+  }
+  #toolbar {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    height: auto;
+  }
+  #canvas-area {
+    height: calc(100% - 100px);
+  }
+}

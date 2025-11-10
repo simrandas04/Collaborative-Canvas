@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>🎨 Collab Canvas</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="app-header">
+    <h1>🎨 Collab Canvas</h1>
+    <p>by <strong>Simran Das</strong></p>
+  </header>
+
+  <main id="canvas-container">
+    <aside id="toolbar">
+      <div class="tool-group">
+        <label>Color</label>
+        <input type="color" id="color" value="#2B6CB0">
+      </div>
+      <div class="tool-group">
+        <label>Width</label>
+        <input id="width" type="range" min="1" max="30" value="4">
+      </div>
+      <div class="buttons">
+        <button id="brush" class="active">🖌 Brush</button>
+        <button id="eraser">🧽 Eraser</button>
+        <button id="undo">↩️ Undo</button>
+        <button id="redo">↪️ Redo</button>
+        <button id="clear">🧹 Clear</button>
+        <button id="save">💾 Save</button>
+        <button id="load">📂 Load</button>
+      </div>
+      <div class="users">
+        <h3>👥 Online</h3>
+        <p id="user-list">(You)</p>
+      </div>
+    </aside>
+
+    <section id="canvas-area">
+      <canvas id="drawing"></canvas>
+      <div id="cursors" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer id="status-bar">
+    <span id="fps">FPS: 0</span>
+    <span id="latency">Latency: 0ms</span>
+    <span id="user-count">Users: 1</span>
+  </footer>
+
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="canvas.js"></script>
+</body>
+</html>
